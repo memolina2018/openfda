@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Cuestionario medicamentos</h2>
+
+<form action="searchDrug" method=GET>
+  Active ingredient:<br>
+  <input type="text" name="active_ingredient">
+  <input type="number" name="Limit" min="1" max="25">
+  <br>
+<input type="submit" value="Submit">
+</form>
+<br>
+<br>
+<form action="searchCompany" method=GET>
+  Company:<br>
+  <input type="text" name="company">
+  <input type="number" name="Limit" min="1" max="25">
+  <br><br>
+  <input type="submit" value="Submit">
+</form> 
+<br>
+<br>
+<form action="listCompanies" method=GET>
+  Haz clic aqui para obtener una lista de las companies registradas en la fda:<br>
+  <input type="number" name="Limit" min="1" max="25">
+  <input type="submit" value="Submit">
+</form> 
+<br>
+<br>
+<form action="listDrugs" method=GET>
+  Haz clic aqui para obtener una lista de los medicamentos registrados en la fda:<br>
+  <input type="number" name="Limit" min="1" max="25">
+
+  <input type="submit" value="Submit">
+</form> 
+<br>
+<br>
+<form action="listWarnings" method=GET>
+  Haz clic aqui para obtener una lista de los efectos adversos registrados en la fda:<br>
+
+  <input type="submit" value="Submit">
+ Limit:
+  <input type="number" name="Limit" min="1" max="25">
+</form> 
+
+</body>
+</html>
+</body>
+</html>
