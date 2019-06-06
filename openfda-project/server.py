@@ -68,21 +68,26 @@ class testHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
             
 
             lista_genericos=[]
-            for result in data['results']:
-                try: 
-                    comun=result['openfda']
-                    generico=comun['generic_name']
-                    lista_genericos+=["<li>"+str(generico)]
-                except KeyError:
-                    lista_genericos+=["<li>Medicamento sin nombre generico"]
-            content=(str(lista_genericos)).replace("[","")
-            content=content.replace("]","")
-            content=content.replace("'","")
-            content=content.replace('"',"")
-            content=content.replace(',',"")
+            try:
+                for result in data['results']:
+                    try: 
+                        comun=result['openfda']
+                        generico=comun['generic_name']
+                        lista_genericos+=["<li>"+str(generico)]
+                    except KeyError:
+                        lista_genericos+=["<li>Medicamento sin nombre generico"]
+                content=(str(lista_genericos)).replace("[","")
+                content=content.replace("]","")
+                content=content.replace("'","")
+                content=content.replace('"',"")
+                content=content.replace(',',"")
+                message=str("<b>LISTA DE MEDICAMENTOS</b><br>"+content)
+            except KeyError:
+                message=("<b>ERROR</b><br>Nombre de medicamento no valido")
+                
             
 
-            message=str("<b>LISTA DE MEDICAMENTOS</b><br>"+content)
+            
         # Write content as utf-8 data
             self.wfile.write(bytes(message, "utf8"))
             
@@ -233,6 +238,9 @@ class testHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
             
 
             message=str("LISTA DE ADVERTENCIAS<br>"+content)
+            self.wfile.write(bytes(message, "utf8"))
+        else:
+            message=("<b>ERROR 404</b><br>El recurso solicitado no existe. Revise el path.")
             self.wfile.write(bytes(message, "utf8"))
         
             
